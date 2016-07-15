@@ -1,8 +1,8 @@
 {
   "variables": {
     "vm_name": "rhel-7.2-vmware",
-    "iso_url": "{{env `ISO_URL`}}",
-    "iso_sha256": "03f3a0291634335f6995534d829bd21ffaa0d000004dfeb1b2fb81052d64a4d5"
+    "iso_url": "rhel-server-7.2-x86_64-dvd.iso",
+    "iso_sha256": ""
   },
 
   "builders": [{
