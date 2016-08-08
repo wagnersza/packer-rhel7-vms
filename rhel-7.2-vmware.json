@@ -1,8 +1,9 @@
 {
   "variables": {
     "vm_name": "rhel-7.2-vmware",
+    
     "iso_url": "rhel-server-7.2-x86_64-dvd.iso",
-    "iso_sha256": ""
+    "iso_sha256": "03f3a0291634335f6995534d829bd21ffaa0d000004dfeb1b2fb81052d64a4d5"
   },
 
   "builders": [{
@@ -26,9 +27,10 @@
     "tools_upload_path": "/tmp/vmware_tools_{{.Flavor}}.iso",
     "http_directory": "http",
     "ssh_wait_timeout": "20m",
-    "ssh_username": "vagrant",
+    "ssh_pty" : "true",
+    "ssh_username": "root",
     "ssh_password": "vagrant",
-    "shutdown_command": "echo 'vagrant' | sudo -S /sbin/halt -h -p",
+    "shutdown_command": "/sbin/halt -h -p",
     "boot_wait": "5s",
     "boot_command": [
       "<esc><wait>",
@@ -40,18 +42,10 @@
 
   "provisioners": [{
     "type": "shell",
-    "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
     "scripts": [
-      "scripts/vagrant.sh",
       "scripts/vmware.sh",
       "scripts/sshd.sh",
       "scripts/cleanup.sh"
     ]
-  }],
-
-  "post-processors": [{
-    "type": "vagrant",
-    "output": "{{user `vm_name`}}.box",
-    "keep_input_artifact": false
   }]
 }
