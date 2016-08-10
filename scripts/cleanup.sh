@@ -24,6 +24,7 @@ rm -rf /etc/ssh/ssh_host*_key*
 
 # Clean up /root
 rm -f /root/anaconda-ks.cfg
+rm -f /root/my-post-log
 rm -f /root/install.log
 rm -f /root/install.log.syslog
 rm -rf /root/.pki
