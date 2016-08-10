@@ -28,9 +28,9 @@
     "http_directory": "http",
     "ssh_wait_timeout": "20m",
     "ssh_pty" : "true",
-    "ssh_username": "root",
-    "ssh_password": "vagrant",
-    "shutdown_command": "/sbin/halt -h -p",
+    "ssh_username": "packer",
+    "ssh_password": "packer",
+    "shutdown_command": "sudo -S /sbin/halt -h -p",
     "boot_wait": "5s",
     "boot_command": [
       "<esc><wait>",
