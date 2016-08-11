@@ -20,7 +20,7 @@ echo "net.ipv6.conf.all.disable_ipv6=1" >> /etc/sysctl.conf
 sed -i -e 's/max_log_file_action = ROTATE/max_log_file_action = keep_logs/g' /etc/audit/auditd.conf
 
 # Record events that modify date and time information
-cat >/etc/audit/audit.rules <<EOL
+cat >> /etc/audit/rules.d/audit.rules <<EOL
 -a always,exit -F arch=b64 -S adjtimex -S settimeofday -k time-change
 -a always,exit -F arch=b32 -S adjtimex -S settimeofday -S stime -k time-change
 -a always,exit -F arch=b64 -S clock_settime -k time-change
@@ -29,7 +29,7 @@ cat >/etc/audit/audit.rules <<EOL
 EOL
 
 # Record events that modify user and group information
-cat >/etc/audit/audit.rules <<EOL
+cat >> /etc/audit/rules.d/audit.rules <<EOL
 -w /etc/group -p wa -k identity
 -w /etc/passwd -p wa -k identity
 -w /etc/gshadow -p wa -k identity
@@ -38,7 +38,7 @@ cat >/etc/audit/audit.rules <<EOL
 EOL
 
 # Record events that modify network enviroment
-cat >/etc/audit/audit.rules <<EOL
+cat >> /etc/audit/rules.d/audit.rules <<EOL
 -a always,exit -F arch=b64 -S sethostname -S setdomainname -k system-locale
 -a always,exit -F arch=b32 -S sethostname -S setdomainname -k system-locale
 -w /etc/issue -p wa -k system-locale
@@ -48,12 +48,12 @@ cat >/etc/audit/audit.rules <<EOL
 EOL
 
 # Record events that modify the mandatory access control system
-cat >/etc/audit/audit.rules <<EOL
+cat >> /etc/audit/rules.d/audit.rules <<EOL
 -w /etc/selinux/ -p wa –k MAC-policy
 EOL
 
 # Record login and logout events
-cat >/etc/audit/audit.rules <<EOL
+cat >> /etc/audit/rules.d/audit.rules <<EOL
 -w /var/log/faillog -p wa -k logins
 -w /var/log/lastlog -p wa -k logins
 -w /var/log/tallylog -p wa -k logins
