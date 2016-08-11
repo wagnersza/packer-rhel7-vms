@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+set -x
+
 # disable sending packages redirect
 echo "net.ipv4.conf.all.send_redirects=0" >> /etc/sysctl.conf
 echo "net.ipv4.conf.default.send_redirects=0" >> /etc/sysctl.conf
