@@ -46,6 +46,7 @@
     "scripts": [
       "scripts/vmware.sh",
       "scripts/sshd.sh",
+      "scripts/hardening.sh",
       "scripts/cleanup.sh"
     ]
   }]
